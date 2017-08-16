@@ -19,7 +19,8 @@ import modelo.Saludo;
  *
  * @author Labing I5
  */
-public class Controlador extends HttpServlet {
+public class Controlador extends HttpServlet
+{
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,35 +31,32 @@ public class Controlador extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-       String variable = request.getParameter("saludo");
-       //Verificacion
-       if(variable != null){
-         //Logica De negocio 
-    Saludo saludo = new Saludo();
-    String respuesta = saludo.saludar(variable);
-    ArrayList<String> array= saludo.listar();
-    
-   //la variable que permite hacer el forward
-  RequestDispatcher rd = 
-  getServletContext().getRequestDispatcher("/index.jsp");
-   //Envio de datos entre: Servlet - jsp
-   request.setAttribute("respuesta", respuesta);
-   request.setAttribute("array", array);
-   rd.forward(request, response);
-         
-       }else{
-          //Mandar Mensaje de Error
-          response.sendRedirect("/index.jsp");
-       }
-        
-        
-        
-        
-    }
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
 
+        String variable = request.getParameter("saludo");
+        //Verificacion
+        if (variable != null)
+        {
+            //Logica De negocio 
+            Saludo saludo = new Saludo();
+            String respuesta = saludo.saludar(variable);
+            ArrayList<String> array = saludo.listar();
+
+            //la variable que permite hacer el forward
+            RequestDispatcher rd
+                    = getServletContext().getRequestDispatcher("/index.jsp");
+            //Envio de datos entre: Servlet - jsp
+            request.setAttribute("respuesta", respuesta);
+            request.setAttribute("array", array);
+            rd.forward(request, response);
+        }
+        else
+        {
+            //Mandar Mensaje de Error
+            response.sendRedirect("/index.jsp");
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -97,5 +95,4 @@ public class Controlador extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
