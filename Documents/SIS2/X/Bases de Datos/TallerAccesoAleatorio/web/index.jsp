@@ -2,6 +2,7 @@
     Document   : index
 --%>
 
+
 <%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -37,8 +38,6 @@
         <h2><%=elemento%>
         <%        
         }}
-        %>
-        
-        
+        %> 
       </body>
 </html>
